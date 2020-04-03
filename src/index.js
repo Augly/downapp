@@ -4,20 +4,20 @@
  * @Author: zero
  * @Date: 2020-03-17 10:54:28
  * @LastEditors: zero
- * @LastEditTime: 2020-03-17 16:52:21
+ * @LastEditTime: 2020-03-18 14:32:24
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './asstes/reset.less';
 import './asstes/border.less';
 import './index.css';
-import { Index } from './view/index/index';
+import  App  from './App.js';
 import 'lib-flexible';
 import * as serviceWorker from './serviceWorker';
 import "./redux/index";
 import store from './redux/store.js';
 import { updateCart, deleteFromCart} from "./redux/actions/cart-actions.js";
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 // Update Cart
 console.log(store.getState())
 let unsubscribe = store.subscribe(() =>
