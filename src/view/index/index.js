@@ -1,4 +1,12 @@
 /*
+ * @Descripttion : 
+ * @version      : 1.0.0
+ * @Author       : 
+ * @Date         : 2023-08-02 13:49:17
+ * @LastEditors  : Please set LastEditors
+ * @LastEditTime : 2023-08-04 12:02:38
+ */
+/*
  * @Descripttion: 
  * @version: 
  * @Author: zero
@@ -8,9 +16,8 @@
  */
 import React from 'react'
 import './index.less'
-import { getLatestRelease } from "@/api/index.js"
+// import { getLatestRelease } from "@/api/index.js"
 import tsIcon from '@/asstes/images/logo@2x.png';
-import topIcon from '@/asstes/images/top2x.png';
 
 function isWeiXin () {
   if (navigator.userAgent.match(/(MicroMessenger|micromessenger);?/i)) {
@@ -22,7 +29,7 @@ function isWeiXin () {
 class Mask extends React.Component {
   render () {
     return <div className="mask" onClick={this.props.onClick}>
-      <img src={tsIcon} alt="" className="shareLogo"/>
+      <img src={tsIcon} alt="" className="shareLogo" />
     </div>
   }
 }
@@ -38,27 +45,20 @@ class Index extends React.Component {
   }
   onloadDown (e) {
     e.preventDefault();
-    if (isWeiXin()){
+    if (isWeiXin()) {
       this.setState(state => ({
         show: true
       }))
-    }else{
-      getLatestRelease({
-        appDictId:3
-      }).then((result) => {
-        if(result){
-          if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-            window.location.href = result.result.iosUrl; //ios app协议
-          }
-          if (navigator.userAgent.match(/android/i)) {
-            window.location.href = result.result.androidUrl; //android 下载地址
-          }
-        }
-      }).catch((err) => {
-        
-      });
+    } else {
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+        window.location.href = ''; //ios app协议
+      }
+      if (navigator.userAgent.match(/android/i)) {
+        console.log('android')
+        window.location.href = 'https://sweetclub.s3.ap-east-1.amazonaws.com/apk/app-release-2023-08-03.apk'; //android 下载地址
+      }
     }
-    
+
   }
   hideShow (e) {
     this.setState((state) => ({
@@ -67,9 +67,22 @@ class Index extends React.Component {
   }
   render () {
     return <div className="wrap">
-      <img src={topIcon} alt="" className="toplogo" />
+      <div className='top-left'></div>
+      <div className='titile'>
+        <h2 className='t_1'>專屬年輕人</h2>
+        <h2 className='t_2'>的社交平台</h2>
+      </div>
+      <div className='content'>
+        <div className='logo'></div>
+        <div className="ball1"></div>
+        <div className="ball2"></div>
+        <div className="ball3"></div>
+        <div className="ball4"></div>
+        <div className="ball5"></div>
+      </div>
       {this.state.show && <Mask onClick={this.hideShow} />}
       <div className='button-transparent' onClick={this.onloadDown}>立即下载</div>
+      <div className='bottom-right'></div>
     </div>
   }
 }
