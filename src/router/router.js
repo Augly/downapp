@@ -1,4 +1,12 @@
 /*
+ * @Descripttion : 
+ * @version      : 1.0.0
+ * @Author       : 
+ * @Date         : 2023-08-02 13:49:17
+ * @LastEditors  : 
+ * @LastEditTime : 2023-09-12 11:22:55
+ */
+/*
  * @Descripttion: 
  * @version: 
  * @Author: zero
@@ -16,6 +24,11 @@ const routers = [
     path: "/",
     exact: true,
     component: loadable('index')
+  },
+  {
+    path: "/iosdown",
+    exact: true,
+    component: loadable('iosdown')
   }
 ]
 

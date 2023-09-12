@@ -4,7 +4,7 @@
  * @Author       : 
  * @Date         : 2023-08-02 13:49:17
  * @LastEditors  : Please set LastEditors
- * @LastEditTime : 2023-08-04 12:02:38
+ * @LastEditTime : 2023-09-12 11:37:26
  */
 /*
  * @Descripttion: 
@@ -18,6 +18,7 @@ import React from 'react'
 import './index.less'
 // import { getLatestRelease } from "@/api/index.js"
 import tsIcon from '@/asstes/images/logo@2x.png';
+import { withRouter } from 'react-router-dom';
 
 function isWeiXin () {
   if (navigator.userAgent.match(/(MicroMessenger|micromessenger);?/i)) {
@@ -36,6 +37,7 @@ class Mask extends React.Component {
 
 class Index extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props)
     this.state = {
       show: false
@@ -51,11 +53,12 @@ class Index extends React.Component {
       }))
     } else {
       if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-        window.location.href = ''; //ios app协议
+        console.log('ios')
+        this.props.history.push('/iosdown');
       }
       if (navigator.userAgent.match(/android/i)) {
         console.log('android')
-        window.location.href = 'https://sweetclub.s3.ap-east-1.amazonaws.com/apk/app-release-2023-08-03.apk'; //android 下载地址
+        window.location.href = 'https://sweetclub.s3.ap-east-1.amazonaws.com/apk/app-release.apk'; //android 下载地址
       }
     }
 
@@ -87,4 +90,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default withRouter(Index);
